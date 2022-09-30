@@ -1,28 +1,51 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-main>
+      <Header />
+      <div>
+        <transition name="fade-slide-up" mode="out-in">
+          <router-view></router-view>
+        </transition>
+      </div>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/layout/Header";
 
 export default {
-  name: 'App',
+  name: "App",
+
   components: {
-    HelloWorld
-  }
-}
+    Header,
+  },
+
+  data: () => ({
+    //
+  }),
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.jejugothic * {
+  font-family: "Jeju Gothic", sans-serif;
+}
+
+* {
+  font-family: "Jeju Gothic";
+}
+.fade-slide-up-enter-active {
+  transition: all 0.5s ease;
+}
+.fade-slide-up-leave-active {
+  transition: all 0.5s ease;
+}
+.fade-slide-up-enter,
+.fade-slide-up-leave-to {
+  transform: translateY(40px);
+  opacity: 0;
 }
 </style>
